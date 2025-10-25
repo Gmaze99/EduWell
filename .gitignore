@@ -5,3 +5,4 @@ EduWellness.egg-info/
 artifacts/models/
 artifacts/processed/
 artifacts/raw/
+__pycache__/
