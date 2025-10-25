@@ -8,3 +8,5 @@ imbalanced-learn
 lightgbm
 mlflow
 flask
+dvc
+dvc-gs
