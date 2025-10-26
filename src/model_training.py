@@ -7,13 +7,14 @@ from sklearn.metrics import mean_squared_error, r2_score
 from src.logger import get_logger
 from src.custom_exception import CustomException
 from config.paths_config import *
-from utils.common_functions import read_yaml,load_data
+from utils.common_functions import read_yaml, load_data
 
 import mlflow
 import mlflow.sklearn
 from mlflow.models import infer_signature
 
 logger = get_logger(__name__)
+
 
 class ModelTraining:
 
@@ -28,18 +29,18 @@ class ModelTraining:
             df_train = load_data(self.train_path)
             df_test = load_data(self.test_path)
 
-            X_train = df_train.drop('exam_score', axis=1)
-            y_train = df_train['exam_score']
+            X_train = df_train.drop("exam_score", axis=1)
+            y_train = df_train["exam_score"]
 
-            X_test = df_test.drop('exam_score', axis=1)
-            y_test = df_test['exam_score']
+            X_test = df_test.drop("exam_score", axis=1)
+            y_test = df_test["exam_score"]
 
             logger.info("Data loaded and split into features and target variable")
 
             return X_train, y_train, X_test, y_test
         except Exception as e:
             raise CustomException("Error in loading and splitting data", e)
-        
+
     def train_linear_regression(self, X_train, y_train):
         try:
             model = LinearRegression()
@@ -47,7 +48,7 @@ class ModelTraining:
             return model
         except Exception as e:
             raise CustomException("Error in training Linear Regression model", e)
-        
+
     def evaluate_model(self, model, X_test, y_test):
         try:
             predictions = model.predict(X_test)
@@ -59,7 +60,7 @@ class ModelTraining:
             return mse, r2
         except Exception as e:
             raise CustomException("Error in evaluating model", e)
-        
+
     def save_model(self, model):
         try:
             os.makedirs(os.path.dirname(self.model_config_path), exist_ok=True)
@@ -69,7 +70,7 @@ class ModelTraining:
             logger.info(f"Model saved at {self.model_config_path}")
         except Exception as e:
             raise CustomException("Error in saving model", e)
-        
+
     def run(self):
         try:
             mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
@@ -98,11 +99,10 @@ class ModelTraining:
                 logger.info("Model training process completed successfully")
         except Exception as e:
             raise CustomException("Error in model training process", e)
-        
+
+
 if __name__ == "__main__":
     model_trainer = ModelTraining(
-       PROCESSED_TRAIN_DATA_PATH,
-       PROCESSED_TEST_DATA_PATH,
-       MODEL_OUTPUT_PATH
+        PROCESSED_TRAIN_DATA_PATH, PROCESSED_TEST_DATA_PATH, MODEL_OUTPUT_PATH
     )
     model_trainer.run()
