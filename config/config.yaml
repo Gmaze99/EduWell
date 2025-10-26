@@ -2,3 +2,23 @@ data_ingestion:
   bucket_name: "data_bucket99"
   bucket_file_name: "student_habits_performance.csv"
   train_ratio: 0.8
+
+data_processing:
+  categoraical_features:
+    - gender
+    - part_time_job
+    - diet_quality
+    - parental_education_level
+    - internet_quality
+    - extracurricular_participation
+  numerical_features:
+    - age
+    - study_hours_per_day
+    - social_media_hours
+    - netflix_hours
+    - attendance_percentage
+    - sleep_hours
+    - exercise_frequency
+    - mental_health_rating
+    - exam_score
+  
