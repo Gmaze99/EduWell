@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial=scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static' , filename='style.css') }}">
+    <title>EduWell</title>
+</head>
+
+
+<body>
+<div class="container">
+    <h2>EduWell</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="entry1">Entry1</label>
+            <input type="number" id="entry1" name="entry1" required>
+        </div>
+
+
+        <div class="form-group">
+            <label for="entry2">entry2</label>
+            <input type="number" id="entry2" name="entry2" required>
+        </div>
+
+        <div class="form-group">
+            <label for="entry3">entry3</label>
+            <input type="number" id="entry3" name="entry3" required>
+        </div>
+
+         <div class="form-group">
+            <label for="entry4">entry4</label>
+            <input type="number" id="entry4" name="entry4" required>
+        </div>
+
+         <div class="form-group">
+            <label for="entry5">entry5</label>
+            <input type="number" id="entry5" name="entry5" required>
+        </div>
+         <div class="form-group">
+            <label for="entry6">Avg_price_per_room</label>
+            <input type="number" id="entry6" name="entry6" required>
+        </div>
+         <div class="form-group">
+            <label for="entry7">Avg_price_per_room</label>
+            <input type="number" id="entry7" name="entry7" required>
+        </div>
+         <div class="form-group">
+            <label for="entry8">Avg_price_per_room</label>
+            <input type="number" id="entry8" name="entry8" required>
+        </div>
+         <div class="form-group">
+            <label for="entry9">Avg_price_per_room</label>
+            <input type="number" id="entry9" name="entry9" required>
+        </div>
+         <div class="form-group">
+            <label for="entry10">Avg_price_per_room</label>
+            <input type="number" id="entry10" name="entry10" required>
+        </div>
+         <div class="form-group">
+            <label for="entry11">Avg_price_per_room</label>
+            <input type="number" id="entry11" name="entry11" required>
+        </div>
+
+         <div class="form-group">
+            <label for="entry12">Avg_price_per_room</label>
+            <input type="number" id="entry12" name="entry12" required>
+        </div>
+         <div class="form-group">
+            <label for="entry13">Avg_price_per_room</label>
+            <input type="number" id="entry13" name="entry13" required>
+        </div>
+         <div class="form-group">
+            <label for="entry14">Avg_price_per_room</label>
+            <input type="number" id="entry14" name="entry14" required>
+        </div>
+         <div class="form-group">
+            <label for="entry15">Avg_price_per_room</label>
+            <input type="number" id="entry15" name="entry15" required>
+        </div>
+        <div class="form-group">
+            <label for="entry16">Avg_price_per_room</label>
+            <input type="number" id="entry16" name="entry16" required>
+        </div>
+
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+    <div class="result">
+        <h3>Prediction: {{ prediction }}</h3>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
