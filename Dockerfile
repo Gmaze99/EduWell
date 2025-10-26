@@ -1,17 +1,24 @@
-# Use a lightweight Python image
-FROM python:slim
+# Use a more specific Python image
+FROM python:3.11-slim
 
-# Set environment variables to prevent Python from writing .pyc files & Ensure Python output is not buffered
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the application code
+# Copy requirements first (better for caching)
+COPY requirements.txt .
+
+# Install PyArrow with binary wheels first, then the rest
+RUN pip install --no-cache-dir --only-binary=pyarrow pyarrow
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application
 COPY . .
 
-# Install the package in editable mode
+# Install in editable mode
 RUN pip install --no-cache-dir -e .
 
 # Train the model before running the application
