@@ -25,6 +25,9 @@ class DataProcessor:
         try:
             logger.info("Starting the preprocessing of data")
 
+            logger.info("Fill out missing values")
+            df['parental_education_level'] = df['parental_education_level'].fillna(df['parental_education_level'].mode()[0])
+            
             logger.info("Dropping the columns")
             df.drop(columns=['student_id'], inplace=True)
             df.drop_duplicates(inplace=True)
