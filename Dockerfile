@@ -21,8 +21,6 @@ COPY . .
 # Install in editable mode
 RUN pip install --no-cache-dir -e .
 
-# Train the model before running the application
-RUN python pipeline/training_pipeline.py
 
 # Expose the port that Flask will run on
 EXPOSE 8080
