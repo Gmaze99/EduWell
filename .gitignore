@@ -4,3 +4,4 @@ logs/
 EduWellness.egg-info/
 __pycache__/
 mlartifacts/
+cmd.txt
